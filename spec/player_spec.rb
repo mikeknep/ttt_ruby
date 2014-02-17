@@ -8,21 +8,21 @@ end
 
 
 describe Human do
-  it "has a token" do
-    expect(Human.new('X').token).to eq('X')
+  it "is a kind of player" do
+    expect(Human.new('X')).to be_a(Player)
   end
 end
 
 
 describe Jane do # Sympathetic computer
-  it "has a token" do
-    expect(Jane.new('E').token).to eq('E')
+  it "is a kind of player" do
+    expect(Jane.new('E')).to be_a(Player)
   end
 end
 
 
 describe Joshua do # Relentless computer
-  it "has a token" do
-    expect(Joshua.new('J').token).to eq('J')
+  it "is a kind of player" do
+    expect(Joshua.new('J')).to be_a(Player)
   end
 end
