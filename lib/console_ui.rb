@@ -14,7 +14,14 @@ module ConsoleUI
     token = $stdin.gets.chomp
   end
 
-  def self.build_player(name, token)
-    Object.const_get(name).new(token)
+  def self.display_board(board)
+    board_as_string = String.new
+
+    board.spots.each_with_index do |spot, index|
+      border_or_newline = ((index + 1) % board.size == 0) ? "\n" : "|"
+      board_as_string << spot + border_or_newline
+    end
+
+    $stdout.puts board_as_string
   end
 end

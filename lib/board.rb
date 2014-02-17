@@ -3,6 +3,6 @@ class Board
 
   def initialize(size)
     @size = size
-    @spots = Array.new(size**2, nil)
+    @spots = Array.new(size**2, ' ')
   end
 end

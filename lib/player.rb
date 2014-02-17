@@ -4,6 +4,10 @@ class Player
   def initialize(token)
     @token = token
   end
+
+  def self.build_player(name, token)
+    Object.const_get(name).new(token)
+  end
 end
 
 

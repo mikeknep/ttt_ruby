@@ -17,7 +17,9 @@ describe ConsoleUI do
     expect(ConsoleUI.choose_token).to eq('X')
   end
 
-  it "builds a player with custom token" do
-    expect(ConsoleUI.build_player('Joshua', 'M')).to be_a(Joshua)
+  it "displays the board" do
+    pending("Not sure how to test this")
+    ConsoleUI.display_board(Board.new(4))
+    STDOUT includes four new lines
   end
 end
