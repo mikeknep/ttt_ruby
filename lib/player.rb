@@ -1,7 +1,7 @@
 class Player
   attr_accessor :token
 
-  def initialize(params={})
-    @token = params[:token]
+  def initialize(token)
+    @token = token
   end
 end
