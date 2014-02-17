@@ -3,12 +3,6 @@ class Board
 
   def initialize(size)
     @size = size
-    @spots = create_spots
-  end
-
-  def create_spots
-    spots_array = Array.new
-    (size ** 2).times { spots_array << nil }
-    spots_array
+    @spots = Array.new(size**2, nil)
   end
 end
