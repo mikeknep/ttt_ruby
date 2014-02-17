@@ -5,3 +5,16 @@ class Player
     @token = token
   end
 end
+
+
+class Human < Player
+end
+
+
+class Jane < Player
+end
+
+
+class Joshua < Player
+end
+
