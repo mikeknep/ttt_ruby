@@ -4,7 +4,7 @@ class Gameplay
   def initialize(game)
     @game = game
     @whose_turn = determine_which_player
-    @next_move = rand(1..game.board.size**2) - 1
+    @next_move = determine_next_move
   end
 
   def determine_which_player
@@ -19,6 +19,10 @@ class Gameplay
     else
       return 'player_2'
     end
+  end
+
+  def determine_next_move # This method gets overwritten in the specific gameplay types, but needs to be here as a placeholder
+    rand(1..game.board.size**2) - 1
   end
 
   def take_turn
