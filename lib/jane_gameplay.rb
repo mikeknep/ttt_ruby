@@ -1,5 +1,4 @@
 class JaneGameplay < Gameplay
-  attr_accessor :game, :whose_turn, :next_move
 
   def initialize(game)
     super
@@ -16,7 +15,4 @@ class JaneGameplay < Gameplay
     return i
   end
 
-  def take_turn
-    game.board.spots[next_move] = game.send(whose_turn).token
-  end
 end

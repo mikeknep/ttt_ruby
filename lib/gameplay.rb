@@ -1,9 +1,10 @@
 class Gameplay
-  attr_accessor :game, :whose_turn
+  attr_accessor :game, :whose_turn, :next_move
 
   def initialize(game)
     @game = game
     @whose_turn = determine_which_player
+    @next_move = rand(1..game.board.size**2) - 1
   end
 
   def determine_which_player
@@ -18,5 +19,9 @@ class Gameplay
     else
       return 'player_2'
     end
+  end
+
+  def take_turn
+    game.board.spots[next_move] = game.send(whose_turn).token
   end
 end

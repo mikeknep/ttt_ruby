@@ -18,4 +18,14 @@ describe Gameplay do
   it "knows which player's turn it is" do
     expect(gameplay.whose_turn).to eq('player_1')
   end
+
+  it "has a default next move" do
+    expect(gameplay.next_move).to be_an(Integer)
+  end
+
+  it "plays a turn" do
+    expect {
+      gameplay.take_turn
+    }.to change{game.board.spots}
+  end
 end
