@@ -1,10 +1,10 @@
 require 'spec_helper'
 
 describe Game do
-  let(:game)  { Game.new(board_size: 4, player_1: Human.new('X'), player_2: Jane.new('O')) }
+  let(:game)  { Game.new(board_size: 3, player_1: Human.new('X'), player_2: Jane.new('O')) }
 
   it "has a board" do
-    expect(game.board.size).to eq(4)
+    expect(game.board.size).to eq(3)
   end
 
   it "has a player 1" do
@@ -19,10 +19,19 @@ describe Game do
     expect(game.status).to eq("in_progress")
   end
 
-  it "changes status to 'over' when all spots are taken" do
-    game.board.spots = Array.new(16, ['X','O'].sample)
-    game.check_status
+  describe "checking status" do
+    it "changes status to 'draw' when all spots are taken without a winner" do
+      game.board.spots = ['X','X','O','O','O','X','X','O','X']
+      game.check_status
 
-    expect(game.status).to eq("over")
+      expect(game.status).to eq("draw")
+    end
+
+    it "changes status to 'over' when someone wins" do
+      game.board.spots = ['X','X','X',' ',' ',' ',' ',' ',' ']
+      game.check_status
+
+      expect(game.status).to eq("winner")
+    end
   end
 end

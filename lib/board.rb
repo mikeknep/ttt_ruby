@@ -74,14 +74,6 @@ class Board
       paths += get_values_for(path)
     end
 
-=begin
-    row_values = get_values_for(rows)
-    col_values = get_values_for(columns)
-    dia_values = get_values_for(diagonals)
-
-    all_paths = row_values + col_values+dia_values
-=end
-
     paths.each do |path|
       if path.uniq.length == 1 && path[0] != ' '
         winner = true

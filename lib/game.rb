@@ -9,10 +9,14 @@ class Game
   end
 
   def check_status
-    unless board.spots.include?(" ")
-      @status = 'over'
+    if board.all_spots_taken?
+      self.status = "draw"
     end
 
-    return @status
+    if board.winner?
+      self.status = "winner"
+    end
+
+    return status
   end
 end
