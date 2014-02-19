@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Board do
   let(:board)   { Board.new(3) }
+
   it "has a size that defines the number of rows and columns" do
     expect(board.size).to eq(3)
   end
@@ -20,19 +21,19 @@ describe Board do
     it "determines if someone has won horizontally" do
       board.spots = ['X','X','X',' ',' ',' ',' ',' ',' ']
 
-      expect(board.winner?(board.get_values_for(board.rows))).to eq(true)
+      expect(board.winner?).to eq(true)
     end
 
     it "determines if someone has won vertically" do
       board.spots = ['X',' ',' ','X',' ',' ','X',' ',' ']
 
-      expect(board.winner?(board.get_values_for(board.columns))).to eq(true)
+      expect(board.winner?).to eq(true)
     end
 
     it "determines if someone has won diagonally" do
-      board.spots = ['X',' ',' ',' ','X',' ',' ',' ','X']
+      board.spots = [' ',' ','X',' ','X',' ','X',' ',' ']
 
-      expect(board.winner?(board.get_values_for(board.diagonals))).to eq(true)
+      expect(board.winner?).to eq(true)
     end
   end
 end

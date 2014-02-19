@@ -43,17 +43,17 @@ class Board
 
 
   def diagonals
-    d1_template = Array.new
+    d1 = Array.new
     size.times do |i|
-      d1_template << (size-1)*(i+1)
+      d1 << (size-1)*(i+1)
     end
 
-    d2_template = Array.new
+    d2 = Array.new
     size.times do |i|
-      d2_template << (size+1)*i
+      d2 << (size+1)*i
     end
 
-    return [d1_template, d2_template]
+    return [d1, d2]
   end
 
 
@@ -66,9 +66,22 @@ class Board
   end
 
 
-  def winner?(paths)
+  def winner?
     winner = false
-    
+
+    paths = Array.new
+    [self.rows, self.columns, self.diagonals].each do |path|
+      paths += get_values_for(path)
+    end
+
+=begin
+    row_values = get_values_for(rows)
+    col_values = get_values_for(columns)
+    dia_values = get_values_for(diagonals)
+
+    all_paths = row_values + col_values+dia_values
+=end
+
     paths.each do |path|
       if path.uniq.length == 1 && path[0] != ' '
         winner = true
