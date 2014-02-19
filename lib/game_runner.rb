@@ -20,11 +20,10 @@ class GameRunner
   end
 
   def run
-    while game.status == "in_progress"
+    until game.over?
       current_gameplay = Object.const_get("#{self.current_player.class}Gameplay")
       current_gameplay.new(game).take_turn
       ConsoleUI.display_board(game.board)
-      game.check_status
     end
   end
 end

@@ -15,23 +15,17 @@ describe Game do
     expect(game.player_2).to be_a(Player)
   end
 
-  it "is initialized with status = 'in_progress'" do
-    expect(game.status).to eq("in_progress")
-  end
-
-  describe "checking status" do
-    it "changes status to 'draw' when all spots are taken without a winner" do
+  describe "checks if it is over" do
+    it "is over when all spots have been played" do
       game.board.spots = ['X','X','O','O','O','X','X','O','X']
-      game.check_status
 
-      expect(game.status).to eq("draw")
+      expect(game.over?).to eq(true)
     end
 
-    it "changes status to 'over' when someone wins" do
+    it "is over when someone has won" do
       game.board.spots = ['X','X','X',' ',' ',' ',' ',' ',' ']
-      game.check_status
 
-      expect(game.status).to eq("winner")
+      expect(game.over?).to eq(true)
     end
   end
 end

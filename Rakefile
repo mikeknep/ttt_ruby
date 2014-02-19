@@ -42,6 +42,4 @@ task :play do
 
   runner = GameRunner.new(@game)
   runner.run
-
-  puts @game.status
 end
