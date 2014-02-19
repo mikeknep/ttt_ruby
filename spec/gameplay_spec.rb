@@ -16,7 +16,7 @@ describe Gameplay do
   end
 
   it "knows which player's turn it is" do
-    expect(gameplay.whose_turn).to eq('player_1')
+    expect(gameplay.whose_turn).to eq(jane)
   end
 
   it "has a default next move" do

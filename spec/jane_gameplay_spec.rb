@@ -15,7 +15,7 @@ describe JaneGameplay do
   end
 
   it "knows which player's turn it is" do
-    expect(jane_play.whose_turn).to eq('player_1')
+    expect(jane_play.whose_turn).to eq(jane)
   end
 
   it "determines the next move" do

@@ -19,7 +19,7 @@ describe HumanGameplay do
 
   it "knows which player's turn it is" do
     game.board.spots[0] = 'J'
-    expect(human_play.whose_turn).to eq('player_2')
+    expect(human_play.whose_turn).to eq(human)
   end
 
   it "determines the next move" do
@@ -33,7 +33,7 @@ describe HumanGameplay do
   end
 
   it "plays the spot selected by the human" do
-    human_play.whose_turn = 'player_2'
+    game.board.spots[0] = 'J'
     human_play.take_turn
     expect(game.board.spots[4]).to eq('H')
   end

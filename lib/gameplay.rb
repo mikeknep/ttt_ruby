@@ -8,17 +8,7 @@ class Gameplay
   end
 
   def determine_which_player
-    count = 2
-
-    game.board.spots.each do |spot|
-      count += 1 if spot != " "
-    end
-
-    if count % 2 == 0
-      return 'player_1'
-    else
-      return 'player_2'
-    end
+    GameRunner.new(game).current_player
   end
 
   def determine_next_move # This method gets overwritten in the specific gameplay types, but needs to be here as a placeholder
@@ -26,6 +16,6 @@ class Gameplay
   end
 
   def take_turn
-    game.board.spots[next_move] = game.send(whose_turn).token
+    game.board.spots[next_move] = determine_which_player.token
   end
 end
