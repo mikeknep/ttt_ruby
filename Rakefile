@@ -42,4 +42,20 @@ task :play do
     player_2: player_2
   )
 
+  ConsoleUI.display_board(@game.board)
+
+  while @game.status == "in_progress"
+    HumanGameplay.new(@game).take_turn
+    ConsoleUI.display_board(@game.board)
+    @game.check_status
+    break if @game.status == "over"
+
+    puts "Jane's turn: \n"
+    JaneGameplay.new(@game).take_turn
+    ConsoleUI.display_board(@game.board)
+    @game.check_status
+  end
+
+  puts @game.status
+  ConsoleUI.display_board(@game.board)
 end
