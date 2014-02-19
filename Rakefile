@@ -41,13 +41,14 @@ task :play do
   ConsoleUI.display_board(@game.board)
 
   while @game.status == "in_progress"
-    HumanGameplay.new(@game).take_turn
+    player_1_gameplay_class = Object.const_get("#{@game.player_1.class}Gameplay")
+    player_1_gameplay_class.new(@game).take_turn
     ConsoleUI.display_board(@game.board)
     @game.check_status
     break if @game.status != "in_progress"
 
-    puts "Jane's turn: \n"
-    JaneGameplay.new(@game).take_turn
+    player_2_gameplay_class = Object.const_get("#{@game.player_2.class}Gameplay")
+    player_2_gameplay_class.new(@game).take_turn
     ConsoleUI.display_board(@game.board)
     @game.check_status
   end
