@@ -44,7 +44,7 @@ task :play do
     HumanGameplay.new(@game).take_turn
     ConsoleUI.display_board(@game.board)
     @game.check_status
-    break if @game.status == "over"
+    break if @game.status != "in_progress"
 
     puts "Jane's turn: \n"
     JaneGameplay.new(@game).take_turn
