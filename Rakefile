@@ -15,10 +15,6 @@ task :console do
 end
 
 
-task :pry do
-  Pry.start
-end
-
 
 task :play do
   puts "Let's play Tic Tac Toe!"
