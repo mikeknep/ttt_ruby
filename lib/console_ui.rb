@@ -15,12 +15,14 @@ module ConsoleUI
   end
 
   def self.display_board(board)
-    board_as_string = String.new
+    board_as_string = "\n\nTic-Tac-Toe\n\n"
 
     board.spots.each_with_index do |spot, index|
       border_or_newline = ((index + 1) % board.size == 0) ? "\n" : "|"
       board_as_string << spot + border_or_newline
     end
+
+    board_as_string << "\n\n"
 
     $stdout.puts board_as_string
   end

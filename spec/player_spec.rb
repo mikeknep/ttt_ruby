@@ -4,29 +4,31 @@ describe Player do
   it "has a token" do
     expect(Player.new('X').token).to eq('X')
   end
-
-  it "builds a specific kind of player with a custom token" do
-    expect(Player.build_player('Joshua', 'M')).to be_a(Joshua)
-  end
 end
 
 
 describe Human do
+  let(:human)   { Human.new('X') }
+
   it "is a kind of player" do
-    expect(Human.new('X')).to be_a(Player)
+    expect(human).to be_a(Player)
   end
 end
 
 
-describe Jane do 
+describe Jane do
+  let(:jane)    { Jane.new('E') }
+
   it "is a kind of player" do
-    expect(Jane.new('E')).to be_a(Player)
+    expect(jane).to be_a(Player)
   end
 end
 
 
 describe Joshua do 
+  let(:joshua)  { Joshua.new('J') }
+
   it "is a kind of player" do
-    expect(Joshua.new('J')).to be_a(Player)
+    expect(joshua).to be_a(Player)
   end
 end

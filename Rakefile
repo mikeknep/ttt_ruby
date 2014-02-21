@@ -7,8 +7,8 @@ task :console do
 
   @game = Game.new(
     board_size: 3,
-    player_1: Player.build_player('Human', 'H'),
-    player_2: Player.build_player('Jane', 'J')
+    player_1: PlayerHelper.build_player('Human', 'H'),
+    player_2: PlayerHelper.build_player('Jane', 'J')
   )
 
   Pry.start
@@ -24,12 +24,12 @@ task :play do
   puts "First, let's specify player 1."
   player_1_name   = ConsoleUI.determine_player
   player_1_token  = ConsoleUI.choose_token
-  player_1        = Player.build_player(player_1_name, player_1_token)
+  player_1        = PlayerHelper.build_player(player_1_name, player_1_token)
 
   puts "OK, great! Next, player 2."
   player_2_name   = ConsoleUI.determine_player
   player_2_token  = ConsoleUI.choose_token
-  player_2        = Player.build_player(player_2_name, player_2_token)
+  player_2        = PlayerHelper.build_player(player_2_name, player_2_token)
 
 
   @game = Game.new(

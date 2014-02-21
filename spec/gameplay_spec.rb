@@ -15,8 +15,8 @@ describe Gameplay do
     expect(gameplay.game).to be_a(Game)
   end
 
-  it "knows which player's turn it is" do
-    expect(gameplay.whose_turn).to eq(jane)
+  it "grabs the current player's token" do
+    expect(gameplay.token).to eq(jane.token)
   end
 
   it "has a default next move" do

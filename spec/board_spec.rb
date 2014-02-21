@@ -17,6 +17,30 @@ describe Board do
     expect(board.all_spots_taken?).to eq(true)
   end
 
+  context "getting correct directions" do
+    let(:board2x2)  { Board.new(2) }
+
+    before :each do
+      board2x2.spots = ['A','B','C','D']
+    end
+
+    it "understands rows" do
+      expect(board2x2.rows).to eq([[0,1], [2,3]])
+    end
+
+    it "understands columns" do
+      expect(board2x2.columns).to eq([[0,2], [1,3]])
+    end
+
+    it "understands diagonals" do
+      expect(board2x2.diagonals).to eq([[1,2], [0,3]])
+    end
+
+    it "gets the values for a direction" do
+      expect(board2x2.get_values_for(board2x2.rows)).to eq([['A','B'], ['C','D']])
+    end
+  end
+
   context "checking for a winner" do
     it "determines if someone has won horizontally" do
       board.spots = ['X','X','X',' ',' ',' ',' ',' ',' ']

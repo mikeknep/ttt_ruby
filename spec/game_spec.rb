@@ -4,7 +4,7 @@ describe Game do
   let(:game)  { Game.new(board_size: 3, player_1: Human.new('X'), player_2: Jane.new('O')) }
 
   it "has a board" do
-    expect(game.board.size).to eq(3)
+    expect(game.board).to be_a(Board)
   end
 
   it "has a player 1" do
@@ -27,5 +27,11 @@ describe Game do
 
       expect(game.over?).to eq(true)
     end
+  end
+
+  it "identifies the current player" do
+    game.board.spots = ['X',' ',' ',' ',' ',' ',' ',' ',' ']
+
+    expect(game.current_player).to eq(game.player_2)
   end
 end
