@@ -8,7 +8,7 @@ module Rules
         count += 1 if spot != ' '
       end
 
-      count % 2 == 0 ? 'player_1' : 'player_2'
+      count % 2 == 0 ? '@player_1' : '@player_2'
     end
 
 

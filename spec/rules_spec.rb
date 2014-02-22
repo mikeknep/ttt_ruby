@@ -9,7 +9,7 @@ describe Rules do
   it "determines which player's turn it is" do
     board.spots = ['X','O',' ',' ',' ',' ',' ',' ',' ']
 
-    expect(Rules.current_player(board)).to eq('player_1')
+    expect(Rules.current_player(board)).to eq('@player_1')
   end
 
   it "knows when all the spots are taken on a board" do
