@@ -6,12 +6,6 @@ class Board
     @spots = Array.new(size**2, ' ')
   end
 
-
-  def all_spots_taken?
-    true if not spots.include?(' ')
-  end
-
-
   def rows
     row_template = Array.new
     size.times do |i|
@@ -63,24 +57,6 @@ class Board
       values << dir.map{|i| spots.values_at(i) }.flatten
     end
     return values
-  end
-
-
-  def winner?
-    winner = false
-
-    paths = Array.new
-    [self.rows, self.columns, self.diagonals].each do |path|
-      paths += get_values_for(path)
-    end
-
-    paths.each do |path|
-      if path.uniq.length == 1 && path[0] != ' '
-        winner = true
-      end
-    end
-
-    return winner
   end
 
 end

@@ -1,63 +1,33 @@
 require 'spec_helper'
 
 describe Board do
-  let(:board)   { Board.new(3) }
+  let(:board)   { Board.new(2) }
+
+  before :each do
+    board.spots = ['A','B','C','D']
+  end
 
   it "has a size that defines the number of rows and columns" do
-    expect(board.size).to eq(3)
+    expect(board.size).to eq(2)
   end
 
   it "has a collection of spots equal to the square of the size" do
-    expect(board.spots.count).to eq(9)
+    expect(board.spots.count).to eq(4)
   end
 
-  it "determines if all spots are taken" do
-    board.spots = Array.new(9, ['X','O'].sample)
-
-    expect(board.all_spots_taken?).to eq(true)
+ it "has rows" do
+    expect(board.rows).to eq([[0,1], [2,3]])
   end
 
-  context "getting correct directions" do
-    let(:board2x2)  { Board.new(2) }
-
-    before :each do
-      board2x2.spots = ['A','B','C','D']
-    end
-
-    it "understands rows" do
-      expect(board2x2.rows).to eq([[0,1], [2,3]])
-    end
-
-    it "understands columns" do
-      expect(board2x2.columns).to eq([[0,2], [1,3]])
-    end
-
-    it "understands diagonals" do
-      expect(board2x2.diagonals).to eq([[1,2], [0,3]])
-    end
-
-    it "gets the values for a direction" do
-      expect(board2x2.get_values_for(board2x2.rows)).to eq([['A','B'], ['C','D']])
-    end
+  it "has columns" do
+    expect(board.columns).to eq([[0,2], [1,3]])
   end
 
-  context "checking for a winner" do
-    it "determines if someone has won horizontally" do
-      board.spots = ['X','X','X',' ',' ',' ',' ',' ',' ']
+  it "has diagonals" do
+    expect(board.diagonals).to eq([[1,2], [0,3]])
+  end
 
-      expect(board.winner?).to eq(true)
-    end
-
-    it "determines if someone has won vertically" do
-      board.spots = ['X',' ',' ','X',' ',' ','X',' ',' ']
-
-      expect(board.winner?).to eq(true)
-    end
-
-    it "determines if someone has won diagonally" do
-      board.spots = [' ',' ','X',' ','X',' ','X',' ',' ']
-
-      expect(board.winner?).to eq(true)
-    end
+  it "returns the values for a direction" do
+    expect(board.get_values_for(board.rows)).to eq([['A','B'], ['C','D']])
   end
 end
