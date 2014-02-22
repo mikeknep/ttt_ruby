@@ -15,6 +15,15 @@ task :console do
 end
 
 
+task :nogame do
+  @board = Board.new(3)
+  @player_1 = PlayerHelper.build_player('Human', 'X')
+  @player_2 = PlayerHelper.build_player('Jane', 'O')
+
+  Pry.start
+end
+
+
 
 task :play do
   puts "Let's play Tic Tac Toe!"
