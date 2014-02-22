@@ -1,15 +1,15 @@
 module ConsoleUI
-  def self.determine_board_size
+  def self.ask_board_size
     $stdout.puts "What size board do you want to play on?"
     size = $stdin.gets.chomp.to_i
   end
 
-  def self.determine_player
+  def self.ask_player_type
     $stdout.puts "Is this player Human, Jane, or Joshua?"
     player_name = $stdin.gets.chomp
   end
 
-  def self.choose_token
+  def self.ask_token
     $stdout.puts "What token is this player using?"
     token = $stdin.gets.chomp
   end
