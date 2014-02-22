@@ -1,4 +1,7 @@
 class GameRunner
+
+  # Under major construction
+
   attr_accessor :game
 
   def initialize(game)
@@ -6,8 +9,8 @@ class GameRunner
   end
 
   def run
-    until game.over?
-      game.current_player.take_turn(game)
+    until Rules.game_over?(game.board)
+      Rules.current_player(game.board).take_turn(game)
       ConsoleUI.display_board(game.board)
     end
   end

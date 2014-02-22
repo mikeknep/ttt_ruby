@@ -6,7 +6,7 @@ describe GameRunner do
   let(:game)    { Game.new(board_size: 3, player_1: jane1, player_2: jane2) }
   let(:runner)  { GameRunner.new(game) }
 
-  it "ends the game when there is a winner" do
+  xit "ends the game when there is a winner" do
     runner.run
     game.board.spots = ['X','X','X',' ',' ',' ',' ',' ',' ']
     expect(game.over?).to eq(true)
