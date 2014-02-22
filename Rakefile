@@ -17,8 +17,8 @@ end
 
 task :nogame do
   @board = Board.new(3)
-  @player_1 = PlayerHelper.build_player('Human', 'X')
-  @player_2 = PlayerHelper.build_player('Jane', 'O')
+  @player_1 = HumanPlayer.new('X')
+  @player_2 = JanePlayer.new('O')
 
   Pry.start
 end
