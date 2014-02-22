@@ -7,7 +7,7 @@ To play a game, run `rake play`. You will first be prompted to choose a board si
 ## Players
 
 ### Human
-You! (Or maybe your pair partner.) When it's your turn to play, select a spot on the board by choosing its index number. The board spots start at zero (0) and increment left to right, top to bottom. For example, a 3x3 board looks like this:
+You! (Or maybe your pair partner.) When it's your turn to play, select a spot on the board by choosing its index number. The board spots start at zero (0) and increment left to right, top to bottom. For example, the spots on a 3x3 board look like this:
 
 0 | 1 | 2
 
@@ -23,4 +23,4 @@ The WOPR from "WarGames" is relentless in his pursuit of victory. **COMING SOON*
 
 
 ## More info
-Use `rake console` to open up a Pry console for exploring, debugging, etc. It will set up a game with some players for your convenience.
+Use `rake console` to open up a Pry console for exploring, debugging, etc. It will set up a board, two players, and a GameRunner object for your convenience.
