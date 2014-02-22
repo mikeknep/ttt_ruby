@@ -1,5 +1,6 @@
 module PlayerHelper
   def self.build_player(name, token)
-    Object.const_get(name.capitalize).new(token)
+    class_name = name.capitalize + "Player"
+    Object.const_get(class_name).new(token)
   end
 end
