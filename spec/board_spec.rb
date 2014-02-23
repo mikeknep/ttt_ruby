@@ -15,19 +15,9 @@ describe Board do
     expect(board.spots.count).to eq(4)
   end
 
- it "has rows" do
-    expect(board.rows).to eq([[0,1], [2,3]])
-  end
+  it "returns the values of spots" do
+    rows = BoardShaper.new(board.size).row_indexes
 
-  it "has columns" do
-    expect(board.columns).to eq([[0,2], [1,3]])
-  end
-
-  it "has diagonals" do
-    expect(board.diagonals).to eq([[1,2], [0,3]])
-  end
-
-  it "returns the values for a direction" do
-    expect(board.get_values_for(board.rows)).to eq([['A','B'], ['C','D']])
+    expect(board.get_values_for(rows)).to eq([['A','B'], ['C','D']])
   end
 end

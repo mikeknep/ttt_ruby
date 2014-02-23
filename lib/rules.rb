@@ -23,20 +23,18 @@ module Rules
 
 
     def winner_on_board?(board)
-      winner = false
+      shaper = BoardShaper.new(board.size)
+      all_paths = [shaper.row_indexes, shaper.column_indexes, shaper.diagonal_indexes]
 
       values_in_all_directions = Array.new
-      [board.rows, board.columns, board.diagonals].each do |path|
+      
+      all_paths.each do |path|
         values_in_all_directions += board.get_values_for(path)
       end
 
       values_in_all_directions.each do |values|
-        if values.uniq.length == 1 && values[0] != ' '
-          winner = true
-        end
+        (values.uniq.length == 1 && values[0] != ' ') ? (return true) : (return false)
       end
-
-      return winner
     end
   end
 end

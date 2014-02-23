@@ -6,50 +6,6 @@ class Board
     @spots = Array.new(size**2, ' ')
   end
 
-  def rows
-    row_template = Array.new
-    size.times do |i|
-      row_template << i
-    end
-
-    all_rows = Array.new
-    size.times do |i|
-      all_rows << row_template.map{|t| t + size*i}
-    end
-
-    return all_rows
-  end
-
- 
-  def columns
-    column_template = Array.new
-    size.times do |i|
-      column_template << size*i
-    end
-
-    all_columns = Array.new
-    size.times do |i|
-      all_columns << column_template.map{|t| t + i}
-    end
-
-    return all_columns
-  end
-
-
-  def diagonals
-    d1 = Array.new
-    size.times do |i|
-      d1 << (size-1)*(i+1)
-    end
-
-    d2 = Array.new
-    size.times do |i|
-      d2 << (size+1)*i
-    end
-
-    return [d1, d2]
-  end
-
 
   def get_values_for(direction)
     values = Array.new
@@ -58,5 +14,4 @@ class Board
     end
     return values
   end
-
 end
