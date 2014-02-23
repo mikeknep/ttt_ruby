@@ -22,13 +22,11 @@ class BoardShaper
 
   def diagonal_indexes
     d1 = Array.new
+    d2 = Array.new
+
     size.times do |i|
       d1 << (size-1)*(i+1)
-    end
-
-    d2 = Array.new
-    size.times do |i|
-      d2 << (size+1)*i
+      d2 << (size+1)*(i)
     end
 
     return [d1, d2]
