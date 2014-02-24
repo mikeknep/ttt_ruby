@@ -33,8 +33,11 @@ module Rules
       end
 
       values_in_all_directions.each do |values|
-        (values.uniq.length == 1 && values[0] != ' ') ? (return true) : (return false)
+        if values.uniq.length == 1 && values[0] != ' '
+          return true
+        end
       end
+      false
     end
   end
 end

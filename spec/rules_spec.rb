@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Rules do
   let(:board)   { Board.new(3) }
   let(:draw)    { ['X','X','O','X','X','O','O','O','X'] }
-  let(:victory) { ['X','X','X','O','O',' ',' ',' ',' '] }
+  let(:victory) { [' ','X',' ','O','X','O',' ','X',' '] }
 
 
   it "determines which player's turn it is" do
