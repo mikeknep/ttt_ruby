@@ -26,4 +26,10 @@ module ConsoleUI
 
     $stdout.puts board_as_string
   end
+
+  def self.declare_result(board)
+    result = Rules.winner_on_board?(board) ? "#{Rules.winner_on_board?(board)} wins!" : "Cat's game!"
+
+    $stdout.puts result
+  end
 end

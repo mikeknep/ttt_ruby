@@ -35,4 +35,6 @@ task :play do
 
   runner = GameRunner.new(board, player_1, player_2)
   runner.run
+
+  ConsoleUI.declare_result(board)
 end

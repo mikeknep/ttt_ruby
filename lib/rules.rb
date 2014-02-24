@@ -13,7 +13,7 @@ module Rules
 
 
     def game_over?(board)
-      all_spots_taken_on_board?(board) || winner_on_board?(board)
+      true if all_spots_taken_on_board?(board) || winner_on_board?(board)
     end
 
 
@@ -25,7 +25,7 @@ module Rules
     def winner_on_board?(board)
       values_in_all_directions(board).each do |values|
         if values.uniq.length == 1 && values[0] != ' '
-          return true
+          return values[0]
         end
       end
       false

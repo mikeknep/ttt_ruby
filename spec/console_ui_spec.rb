@@ -17,7 +17,25 @@ describe ConsoleUI do
     expect(ConsoleUI.ask_token).to eq('X')
   end
 
-  it "displays the board" do
-    pending "Not sure how to test this"
+  pending "How do you test $stdout.puts ???" do
+    it "displays the board" do
+      board = Board.new(2)
+
+      expect(ConsoleUI.display_board(board)).to #display the board
+    end
+
+    it "declares the winner of the game when there is one" do
+      board = Board.new(2)
+      board.spots = ['X','O','X',' ']
+
+      expect(ConsoleUI.declare_result(board)).to eq('X wins!')
+    end
+
+    it "declares Cat's game when a draw" do
+      board = Board.new(3)
+      board.spots = ['X','O','X','X','O','X','O','X','O']
+
+      expect(ConsoleUI.declare_result(board)).to eq("Cat's game!")
+    end
   end
 end

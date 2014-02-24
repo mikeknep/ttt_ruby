@@ -35,7 +35,7 @@ describe Rules do
   it "knows when a player wins" do
     board.spots = victory
 
-    expect(Rules.winner_on_board?(board)).to eq(true)
+    expect(Rules.winner_on_board?(board)).to eq('X')
   end
 
   it "declares the game over when the board is a draw or has a winner" do
