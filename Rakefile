@@ -18,17 +18,17 @@ end
 task :play do
   puts "Let's play Tic Tac Toe!"
  
-  board_size      = ConsoleUI.determine_board_size
+  board_size      = ConsoleUI.ask_board_size
   board           = Board.new(board_size)
 
   puts "First, let's specify player 1."
-  player_1_name   = ConsoleUI.determine_player
-  player_1_token  = ConsoleUI.choose_token
+  player_1_name   = ConsoleUI.ask_player_type
+  player_1_token  = ConsoleUI.ask_token
   player_1        = PlayerHelper.build_player(player_1_name, player_1_token)
 
   puts "OK, great! Next, player 2."
-  player_2_name   = ConsoleUI.determine_player
-  player_2_token  = ConsoleUI.choose_token
+  player_2_name   = ConsoleUI.ask_player_type
+  player_2_token  = ConsoleUI.ask_token
   player_2        = PlayerHelper.build_player(player_2_name, player_2_token)
 
   ConsoleUI.display_board(board)
