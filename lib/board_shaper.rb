@@ -5,6 +5,10 @@ class BoardShaper
     @size = size
   end
 
+  def all_path_indexes
+    row_indexes + column_indexes + diagonal_indexes
+  end
+
   def row_indexes
     all_rows = Array.new
 
