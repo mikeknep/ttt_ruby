@@ -1,14 +1,14 @@
 module Rules
   class << self
 
-    def current_player(board)
+    def current_player_number(board)
       count = 0
 
       board.spots.each do |spot|
         count += 1 if spot != ' '
       end
 
-      count % 2 == 0 ? '@player_1' : '@player_2'
+      count % 2 == 0 ? 1 : 2
     end
 
 

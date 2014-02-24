@@ -15,7 +15,6 @@ class GameRunner
   end
 
   def current_player
-    player_string = Rules.current_player(board)
-    player_object = instance_variable_get(player_string)
+    Rules.current_player_number(board) == 1 ? player_1 : player_2
   end
 end
