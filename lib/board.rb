@@ -7,11 +7,7 @@ class Board
   end
 
 
-  def get_values_for(direction)
-    values = Array.new
-    direction.each do |dir|
-      values << dir.map{|i| spots.values_at(i) }.flatten
-    end
-    return values
+  def get_values_for(indexes)
+    indexes.map{|index| spots.values_at(index) }.flatten
   end
 end

@@ -23,21 +23,24 @@ module Rules
 
 
     def winner_on_board?(board)
-      shaper = BoardShaper.new(board.size)
-      all_paths = [shaper.row_indexes, shaper.column_indexes, shaper.diagonal_indexes]
-
-      values_in_all_directions = Array.new
-      
-      all_paths.each do |path|
-        values_in_all_directions += board.get_values_for(path)
-      end
-
-      values_in_all_directions.each do |values|
+      values_in_all_directions(board).each do |values|
         if values.uniq.length == 1 && values[0] != ' '
           return true
         end
       end
       false
+    end
+
+
+    def values_in_all_directions(board)
+      all_paths = BoardShaper.new(board.size).all_path_indexes
+      values_in_all_directions = Array.new
+
+      all_paths.each do |path|
+        values_in_all_directions << board.get_values_for(path)
+      end
+
+      return values_in_all_directions
     end
   end
 end

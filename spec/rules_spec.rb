@@ -18,6 +18,20 @@ describe Rules do
     expect(Rules.all_spots_taken_on_board?(board)).to eq(true)
   end
 
+  it "returns the values in all directions on the board" do
+    board.spots = victory
+
+    expect(Rules.values_in_all_directions(board)).to match_array(
+      [ [' ','X',' '],
+        ['O','X','O'],
+        [' ','X',' '],
+        [' ','O',' '],
+        ['X','X','X'],
+        [' ','O',' '],
+        [' ','X',' '],
+        [' ','X',' '] ])
+  end
+
   it "knows when a player wins" do
     board.spots = victory
 

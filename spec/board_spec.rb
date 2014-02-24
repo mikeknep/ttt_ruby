@@ -16,8 +16,8 @@ describe Board do
   end
 
   it "returns the values of spots" do
-    rows = BoardShaper.new(board.size).row_indexes
+    first_row = [0,1]
 
-    expect(board.get_values_for(rows)).to eq([['A','B'], ['C','D']])
+    expect(board.get_values_for(first_row)).to eq(['A','B'])
   end
 end
