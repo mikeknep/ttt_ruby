@@ -5,7 +5,7 @@ class JanePlayer
     @token = token
   end
 
-  def take_turn(board)
+  def take_turn(board, *tokens)
     spot = JaneLogic.choose_next_move(board)
     Gameplay.take_turn(board, spot, token)
   end
