@@ -64,9 +64,8 @@ class JoshuaLogic
 
 
   def copy_board_with_move(board, index, token)
-    copy_spots = board.spots.dup
-    copy_board = Board.new(board.size)
-    copy_board.spots = copy_spots
+    copy_board = board.dup
+    copy_board.spots = board.spots.dup
     copy_board.spots[index] = token
     copy_board
   end
