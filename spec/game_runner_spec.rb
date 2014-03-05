@@ -10,6 +10,10 @@ describe GameRunner do
     expect(runner.current_player).to eq(jane1)
   end
 
+  it "identifies the opponent player object" do
+    expect(runner.opponent).to eq(jane2)
+  end
+
   it "runs the game until there is a winner" do
     runner.run
 

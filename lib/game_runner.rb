@@ -9,12 +9,16 @@ class GameRunner
 
   def run
     until Rules.game_over?(board)
-      current_player.take_turn(board)
+      current_player.take_turn(board, current_player.token, opponent.token)
       ConsoleUI.display_board(board)
     end
   end
 
   def current_player
     Rules.current_player_number(board) == 1 ? player_1 : player_2
+  end
+
+  def opponent
+    Rules.current_player_number(board) == 1 ? player_2 : player_1
   end
 end
