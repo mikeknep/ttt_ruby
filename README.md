@@ -19,7 +19,7 @@ You! (Or maybe your pair partner.) When it's your turn to play, select a spot on
 The lovely, charming artificial sentience living in the ansible network. When not chatting with Ender, she enjoys playing Tic Tac Toe with people. Jane has always been friendly with humans...
 
 ### Joshua
-The WOPR from "WarGames" is relentless in his pursuit of victory. **COMING SOON**
+The WOPR from "WarGames" is relentless in his pursuit of victory...
 
 
 ## More info
