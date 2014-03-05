@@ -12,7 +12,7 @@ class JoshuaLogic
 
     available_spots(board).each do |spot_index|
       copy_board = copy_board_with_move(board, spot_index, token)
-      score = -minimax(copy_board, token, opposite_token, 1)
+      score = minimax(copy_board, token, opposite_token, 0)
 
       if score > best_score
         best_score = score
@@ -25,18 +25,23 @@ class JoshuaLogic
 
 
   def minimax(board, token, opposite_token, depth)
-    best_score = -1.0/0
+    comp_score = (-2)**depth
+    if comp_score > 0
+      operator = '<'
+    else
+      operator = '>'
+    end
     score = nil
 
     if Rules.game_over?(board)
-      return score_board(board, token, depth) / depth
+      (score_board(board, token, depth) == 0) ? (return 0) : (return score_board(board, token, depth) / depth)
     else
       available_spots(board).each do |spot_index|
         copy_board = copy_board_with_move(board, spot_index, opposite_token)
         score = minimax(copy_board, opposite_token, token, depth + 1)
-        best_score = score if score > best_score
+        comp_score = score if score.send(operator, comp_score)
       end
-      return best_score
+      return comp_score
     end
   end
 
