@@ -25,16 +25,13 @@ class JoshuaLogic
 
 
   def minimax(board, token, opposite_token, depth)
-    comp_score = (-2)**depth
-    if comp_score > 0
-      operator = '<'
-    else
-      operator = '>'
-    end
     score = nil
+    comp_score = (-1.0/0)**depth
+    operator = (depth % 2 == 0) ? '<' : '>'
 
     if Rules.game_over?(board)
-      (score_board(board, token, depth) == 0) ? (return 0) : (return score_board(board, token, depth) / depth)
+      score = score_board(board, token, depth) / depth
+      score.nan? ? (return 0) : (return score)
     else
       available_spots(board).each do |spot_index|
         copy_board = copy_board_with_move(board, spot_index, opposite_token)
