@@ -66,7 +66,7 @@ describe JoshuaLogic do
       board.spots = ['X',' ','O','O','X',' ','X','O',' ']
       board.spots[8] = 'X'
 
-      expect(logic.minimax(board, 'X', 'O', 0)).to eq(2.0/0)
+      expect(logic.minimax(board, 'X', 'O', 0)).to eq(1.0/0)
     end
 
     it "scores a winning move at 1 depth -1.0" do
@@ -84,6 +84,16 @@ describe JoshuaLogic do
       board.spots[8] = 'X'
 
       expect(logic.minimax(board, 'X', 'O', 2)).to eq(0.5)
+    end
+
+    it "scores a winning move at 3 depth -0.3333" do
+      board.spots = [' ',' ','X','X','O',' ','O',' ',' ']
+      board.spots[0] = 'X'
+      board.spots[1] = 'O'
+      board.spots[5] = 'X'
+      board.spots[7] = 'O'
+
+      expect(logic.minimax(board, 'O', 'X', 3)).to eq(-1.0/3)
     end
   end
 
