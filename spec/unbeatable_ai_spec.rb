@@ -5,114 +5,6 @@ describe UnbeatableAI do
   let(:logic)     { UnbeatableAI.new(board) }
 
 
-  it "is initialized with a board" do
-    expect(logic.board).to be_a(Board)
-  end
-
-
-  describe "copying the board" do
-    it "makes a copy with an additional move" do
-      board.spots = Array.new(9, ' ')
-      copied_board = logic.copy_board_with_move(board, 4, 'X')
-
-      expect(copied_board.spots[4]).to eq('X')
-    end
-
-    it "does not affect the original board" do
-      board.spots = Array.new(9, ' ')
-      copied_board = logic.copy_board_with_move(board, 4, 'X')
-
-      expect(board.spots[4]).to eq(' ')
-    end
-  end
-
-
-  describe "scoring individual boards" do
-    it "scores a board with a winner at 0 depth +1" do
-      board.spots = ['X',' ','O',
-                     'O','X',' ',
-                     'X','O','X']
-
-      expect(logic.score_board(board, 'X')).to eq(1.0)
-    end
-
-    it "scores a cat's game board 0" do
-      board.spots = ['X','X','O',
-                     'O','O','X',
-                     'X','O','X']
-
-      expect(logic.score_board(board, 'X')).to eq(0.0)
-    end
-
-    it "scores a board with a winner one level deep -1" do
-      board.spots = ['X',' ','O',
-                     'O','X',' ',
-                     'X','O','X']
-
-      expect(logic.score_board(board, 'X', 1)).to eq(-1.0)
-    end
-  end
-
-
-  describe "scoring with depth in minimax" do
-    it "scores a draw move 0 (regardless of depth)" do
-      board.spots = [' ','X','O',
-                     'O','X','X',
-                     'X','O','O']
-
-      board.spots[0] = 'X'
-
-      expect(logic.minimax(board, 'X', 'O', 0)).to eq(0)
-    end
-
-    it "scores a winning move at no depth +infinity" do
-      board.spots = ['X',' ','O',
-                     'O','X',' ',
-                     'X','O',' ']
-
-      board.spots[8] = 'X'
-
-      expect(logic.minimax(board, 'X', 'O', 0)).to eq(1.0/0)
-    end
-
-    it "scores a winning move at 1 depth -1.0" do
-      board.spots = ['X','O','X',
-                     'X','O',' ',
-                     'O',' ',' '] 
-
-      board.spots[5] = 'X'
-      board.spots[7] = 'O'
-
-      expect(logic.minimax(board, 'O', 'X', 1)).to eq(-1.0)
-    end
-
-    it "scores a winning move at 2 depth +0.5" do
-      board.spots = ['X',' ','O',
-                     'O',' ',' ',
-                     'X',' ',' ']
-
-      board.spots[4] = 'X'
-      board.spots[7] = 'O'
-      board.spots[8] = 'X'
-
-      expect(logic.minimax(board, 'X', 'O', 2)).to eq(0.5)
-    end
-
-    it "scores a winning move at 3 depth -0.3333" do
-      board.spots = [' ',' ','X',
-                     'X','O',' ',
-                     'O',' ',' ']
-
-      board.spots[0] = 'X'
-      board.spots[1] = 'O'
-      board.spots[5] = 'X'
-      board.spots[7] = 'O'
-
-      expect(logic.minimax(board, 'O', 'X', 3)).to eq(-1.0/3)
-    end
-  end
-
-
   describe "choosing the next move" do
     context "when there is only one move available" do
       it "chooses the last remaining spot on the board when it leads to a draw" do
@@ -182,6 +74,110 @@ describe UnbeatableAI do
 
         expect(logic.choose_next_move('O', 'X')).to eq(7)
       end
+    end
+  end
+
+
+  #
+  # Lower level specs for component methods
+  #
+  describe "copying the board" do
+    it "makes a copy with an additional move" do
+      board.spots = Array.new(9, ' ')
+      copied_board = logic.copy_board_with_move(board, 4, 'X')
+
+      expect(copied_board.spots[4]).to eq('X')
+    end
+
+    it "does not affect the original board" do
+      board.spots = Array.new(9, ' ')
+      copied_board = logic.copy_board_with_move(board, 4, 'X')
+
+      expect(board.spots[4]).to eq(' ')
+    end
+  end
+
+  describe "scoring individual boards" do
+    it "scores a board with a winner at 0 depth +1" do
+      board.spots = ['X',' ','O',
+        'O','X',' ',
+        'X','O','X']
+
+      expect(logic.score_board(board, 'X')).to eq(1.0)
+    end
+
+    it "scores a cat's game board 0" do
+      board.spots = ['X','X','O',
+        'O','O','X',
+        'X','O','X']
+
+      expect(logic.score_board(board, 'X')).to eq(0.0)
+    end
+
+    it "scores a board with a winner one level deep -1" do
+      board.spots = ['X',' ','O',
+        'O','X',' ',
+        'X','O','X']
+
+      expect(logic.score_board(board, 'X', 1)).to eq(-1.0)
+    end
+  end
+
+  describe "scoring with depth in minimax" do
+    it "scores a draw move 0 (regardless of depth)" do
+      board.spots = [' ','X','O',
+        'O','X','X',
+        'X','O','O']
+
+      board.spots[0] = 'X'
+
+      expect(logic.minimax(board, 'X', 'O', 0)).to eq(0)
+    end
+
+    it "scores a winning move at no depth +infinity" do
+      board.spots = ['X',' ','O',
+        'O','X',' ',
+        'X','O',' ']
+
+      board.spots[8] = 'X'
+
+      expect(logic.minimax(board, 'X', 'O', 0)).to eq(1.0/0)
+    end
+
+    it "scores a winning move at 1 depth -1.0" do
+      board.spots = ['X','O','X',
+        'X','O',' ',
+        'O',' ',' '] 
+
+      board.spots[5] = 'X'
+      board.spots[7] = 'O'
+
+      expect(logic.minimax(board, 'O', 'X', 1)).to eq(-1.0)
+    end
+
+    it "scores a winning move at 2 depth +0.5" do
+      board.spots = ['X',' ','O',
+        'O',' ',' ',
+        'X',' ',' ']
+
+      board.spots[4] = 'X'
+      board.spots[7] = 'O'
+      board.spots[8] = 'X'
+
+      expect(logic.minimax(board, 'X', 'O', 2)).to eq(0.5)
+    end
+
+    it "scores a winning move at 3 depth -0.3333" do
+      board.spots = [' ',' ','X',
+        'X','O',' ',
+        'O',' ',' ']
+
+      board.spots[0] = 'X'
+      board.spots[1] = 'O'
+      board.spots[5] = 'X'
+      board.spots[7] = 'O'
+
+      expect(logic.minimax(board, 'O', 'X', 3)).to eq(-1.0/3)
     end
   end
 end
