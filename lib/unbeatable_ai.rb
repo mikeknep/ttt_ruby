@@ -6,7 +6,7 @@ class UnbeatableAI
   end
 
 
-  def choose_next_move(board, token, opposite_token)
+  def choose_next_move(token, opposite_token)
     best_score = -1.0/0
     best_move = nil
 

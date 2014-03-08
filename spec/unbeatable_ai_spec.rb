@@ -128,7 +128,7 @@ describe UnbeatableAI do
                        'O','X','X',
                        'X','O','O']
 
-        expect(logic.choose_next_move(board, 'X', 'O')).to eq(0)
+        expect(logic.choose_next_move('X', 'O')).to eq(0)
       end
 
       it "chooses the last remaining spot on the board when it leads to a win" do
@@ -136,7 +136,7 @@ describe UnbeatableAI do
                        'O','X','O',
                        'O','X',' ']
 
-        expect(logic.choose_next_move(board, 'X', 'O')).to eq(8)
+        expect(logic.choose_next_move('X', 'O')).to eq(8)
       end
     end
 
@@ -146,7 +146,7 @@ describe UnbeatableAI do
                        'O','X',' ',
                        'X','O',' ']
 
-        expect(logic.choose_next_move(board, 'X', 'O')).to eq(8)
+        expect(logic.choose_next_move('X', 'O')).to eq(8)
       end
 
       it "chooses the spot that wins immediately (test 2)" do
@@ -154,7 +154,7 @@ describe UnbeatableAI do
                        'O','X','O',
                        'X','X',' ']
 
-        expect(logic.choose_next_move(board, 'O', 'X')).to eq(8)
+        expect(logic.choose_next_move('O', 'X')).to eq(8)
       end
 
       it "chooses the spot that wins immediately (test 3)" do
@@ -162,7 +162,7 @@ describe UnbeatableAI do
                        'O','O',' ',
                        'X',' ','X']
 
-        expect(logic.choose_next_move(board, 'O', 'X')).to eq(5)
+        expect(logic.choose_next_move('O', 'X')).to eq(5)
       end
     end
 
@@ -172,7 +172,7 @@ describe UnbeatableAI do
                        'X','O',' ',
                        'O',' ',' ']
 
-        expect(logic.choose_next_move(board, 'X', 'O')).to eq(7)
+        expect(logic.choose_next_move('X', 'O')).to eq(7)
       end
 
       it "blocks the opponent when it can't win immediately" do
@@ -180,7 +180,7 @@ describe UnbeatableAI do
                        'O','O','X',
                        'X','X',' ']
 
-        expect(logic.choose_next_move(board, 'O', 'X')).to eq(8)
+        expect(logic.choose_next_move('O', 'X')).to eq(8)
       end
 
       it "blocks the opponent from winning" do
@@ -188,7 +188,7 @@ describe UnbeatableAI do
                        ' ','X',' ',
                        ' ',' ',' ']
 
-        expect(logic.choose_next_move(board, 'O', 'X')).to eq(7)
+        expect(logic.choose_next_move('O', 'X')).to eq(7)
       end
     end
   end
