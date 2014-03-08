@@ -9,18 +9,6 @@ describe Gameplay do
     }.to change{board.spots}
   end
 
-  it "returns false for an invalid move" do
-    board.spots[3] = 'X'
-
-    expect(Gameplay.valid_spot?(board, 3)).to eq(false)
-  end
-
-  it "returns true for a valid move" do
-    board.spots[3] = 'X'
-
-    expect(Gameplay.valid_spot?(board, 5)).to eq(true)
-  end
-
   it "doesn't play a turn if the spot is invalid" do
     board.spots[3] = 'X'
     expect {

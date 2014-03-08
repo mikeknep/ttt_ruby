@@ -23,6 +23,11 @@ module Rules
     end
 
 
+    def valid_spot?(board, spot)
+      board.spots[spot] == ' '
+    end
+
+
     def game_over?(board)
       true if all_spots_taken_on_board?(board) || winner_on_board?(board)
     end

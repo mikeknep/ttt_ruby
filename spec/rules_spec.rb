@@ -24,6 +24,20 @@ describe Rules do
     expect(Rules.available_spots(board)).to eq([4,5,6,7,8])
   end
 
+  describe "checking whether a spot is valid" do
+    it "returns true for an open spot" do
+      board.spots[3] = 'X'
+
+      expect(Rules.valid_spot?(board, 5)).to eq(true)
+    end
+
+    it "returns false for a spot that has been played already" do
+      board.spots[3] = 'X'
+
+      expect(Rules.valid_spot?(board, 3)).to eq(false)
+    end
+  end
+
   it "returns the values in all directions on the board" do
     board.spots = victory
 
