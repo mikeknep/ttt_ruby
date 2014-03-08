@@ -6,7 +6,7 @@ class JanePlayer
   end
 
   def take_turn(board, *tokens)
-    spot = SimpleAI.choose_next_move(board)
+    spot = SimpleAI.new(board).choose_next_move
     Gameplay.take_turn(board, spot, token)
   end
 end
