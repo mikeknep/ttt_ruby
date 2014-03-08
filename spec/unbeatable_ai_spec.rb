@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe JoshuaLogic do
+describe UnbeatableAI do
   let(:board)     { Board.new(3) }
-  let(:logic)     { JoshuaLogic.new(board) }
+  let(:logic)     { UnbeatableAI.new(board) }
 
 
   it "is initialized with a board" do
