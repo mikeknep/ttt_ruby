@@ -9,14 +9,6 @@ describe UnbeatableAI do
     expect(logic.board).to be_a(Board)
   end
 
-  it "identifies all available_spots on the board" do
-    board.spots = ['X',' ','O',
-                   'O','X',' ',
-                   'X','O',' ']
-
-    expect(logic.available_spots(board)).to eq([1,5,8])
-  end
-
 
   describe "copying the board" do
     it "makes a copy with an additional move" do

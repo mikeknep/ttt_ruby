@@ -18,6 +18,12 @@ describe Rules do
     expect(Rules.all_spots_taken_on_board?(board)).to eq(true)
   end
 
+  it "returns the available spots on the board" do
+    board.spots = ['X','O','X','O',' ',' ',' ',' ',' ']
+
+    expect(Rules.available_spots(board)).to eq([4,5,6,7,8])
+  end
+
   it "returns the values in all directions on the board" do
     board.spots = victory
 

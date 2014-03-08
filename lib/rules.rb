@@ -12,6 +12,17 @@ module Rules
     end
 
 
+    def available_spots(board)
+      available_spots = Array.new
+
+      board.spots.each_with_index do |spot, index|
+        available_spots << index if spot == ' '
+      end
+
+      available_spots
+    end
+
+
     def game_over?(board)
       true if all_spots_taken_on_board?(board) || winner_on_board?(board)
     end
