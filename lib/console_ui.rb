@@ -5,8 +5,13 @@ module ConsoleUI
   end
 
   def self.ask_player_type
-    $stdout.puts "Is this player Human, Jane, or Joshua?"
-    player_name = $stdin.gets.chomp
+    $stdout.puts "Is this player a human or a computer?"
+    player_type = $stdin.gets.chomp
+  end
+
+  def self.ask_difficulty_level
+    $stdout.puts "What difficulty level is this computer? (easy/hard)"
+    difficulty_level = $stdin.gets.chomp
   end
 
   def self.ask_token
