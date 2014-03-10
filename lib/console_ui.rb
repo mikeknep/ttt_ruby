@@ -8,12 +8,12 @@ module ConsoleUI
 
     def ask_player_type
       $stdout.puts "Is this player a human or a computer?"
-      player_type = $stdin.gets.chomp
+      player_type = $stdin.gets.chomp.downcase
     end
 
     def ask_difficulty_level
       $stdout.puts "What difficulty level is this computer? (easy/hard)"
-      difficulty_level = $stdin.gets.chomp
+      difficulty_level = $stdin.gets.chomp.downcase
     end
 
     def ask_token
