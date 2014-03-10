@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'stringio'
 
 describe HumanLogic do
   it "returns the chosen spot" do
