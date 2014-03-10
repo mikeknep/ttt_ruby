@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe UnbeatableAI do
   let(:board)     { Board.new(3) }
-  let(:logic)     { UnbeatableAI.new(board) }
+  let(:ai)        { UnbeatableAI }
 
 
   describe "choosing the next move" do
@@ -12,7 +12,7 @@ describe UnbeatableAI do
                        'O','X','X',
                        'X','O','O']
 
-        expect(logic.choose_next_move('X', 'O')).to eq(0)
+        expect(ai.choose_next_move(board, 'X', 'O')).to eq(0)
       end
 
       it "chooses the last remaining spot on the board when it leads to a win" do
@@ -20,7 +20,7 @@ describe UnbeatableAI do
                        'O','X','O',
                        'O','X',' ']
 
-        expect(logic.choose_next_move('X', 'O')).to eq(8)
+        expect(ai.choose_next_move(board, 'X', 'O')).to eq(8)
       end
     end
 
@@ -30,7 +30,7 @@ describe UnbeatableAI do
                        'O','X',' ',
                        'X','O',' ']
 
-        expect(logic.choose_next_move('X', 'O')).to eq(8)
+        expect(ai.choose_next_move(board, 'X', 'O')).to eq(8)
       end
 
       it "chooses the spot that wins immediately (test 2)" do
@@ -38,7 +38,7 @@ describe UnbeatableAI do
                        'O','X','O',
                        'X','X',' ']
 
-        expect(logic.choose_next_move('O', 'X')).to eq(8)
+        expect(ai.choose_next_move(board, 'O', 'X')).to eq(8)
       end
 
       it "chooses the spot that wins immediately (test 3)" do
@@ -46,7 +46,7 @@ describe UnbeatableAI do
                        'O','O',' ',
                        'X',' ','X']
 
-        expect(logic.choose_next_move('O', 'X')).to eq(5)
+        expect(ai.choose_next_move(board, 'O', 'X')).to eq(5)
       end
     end
 
@@ -56,7 +56,7 @@ describe UnbeatableAI do
                        'X','O',' ',
                        'O',' ',' ']
 
-        expect(logic.choose_next_move('X', 'O')).to eq(7)
+        expect(ai.choose_next_move(board, 'X', 'O')).to eq(7)
       end
 
       it "blocks the opponent when it can't win immediately" do
@@ -64,7 +64,7 @@ describe UnbeatableAI do
                        'O','O','X',
                        'X','X',' ']
 
-        expect(logic.choose_next_move('O', 'X')).to eq(8)
+        expect(ai.choose_next_move(board, 'O', 'X')).to eq(8)
       end
 
       it "blocks the opponent from winning" do
@@ -72,7 +72,7 @@ describe UnbeatableAI do
                        ' ','X',' ',
                        ' ',' ',' ']
 
-        expect(logic.choose_next_move('O', 'X')).to eq(7)
+        expect(ai.choose_next_move(board, 'O', 'X')).to eq(7)
       end
     end
   end
@@ -84,14 +84,14 @@ describe UnbeatableAI do
   describe "copying the board" do
     it "makes a copy with an additional move" do
       board.spots = Array.new(9, ' ')
-      copied_board = logic.copy_board_with_move(board, 4, 'X')
+      copied_board = ai.copy_board_with_move(board, 4, 'X')
 
       expect(copied_board.spots[4]).to eq('X')
     end
 
     it "does not affect the original board" do
       board.spots = Array.new(9, ' ')
-      copied_board = logic.copy_board_with_move(board, 4, 'X')
+      copied_board = ai.copy_board_with_move(board, 4, 'X')
 
       expect(board.spots[4]).to eq(' ')
     end
@@ -103,7 +103,7 @@ describe UnbeatableAI do
         'O','X',' ',
         'X','O','X']
 
-      expect(logic.score_board(board, 'X')).to eq(1.0)
+      expect(ai.score_board(board, 'X')).to eq(1.0)
     end
 
     it "scores a cat's game board 0" do
@@ -111,7 +111,7 @@ describe UnbeatableAI do
         'O','O','X',
         'X','O','X']
 
-      expect(logic.score_board(board, 'X')).to eq(0.0)
+      expect(ai.score_board(board, 'X')).to eq(0.0)
     end
 
     it "scores a board with a winner one level deep -1" do
@@ -119,7 +119,7 @@ describe UnbeatableAI do
         'O','X',' ',
         'X','O','X']
 
-      expect(logic.score_board(board, 'X', 1)).to eq(-1.0)
+      expect(ai.score_board(board, 'X', 1)).to eq(-1.0)
     end
   end
 
@@ -131,7 +131,7 @@ describe UnbeatableAI do
 
       board.spots[0] = 'X'
 
-      expect(logic.minimax(board, 'X', 'O', 0)).to eq(0)
+      expect(ai.minimax(board, 'X', 'O', 0)).to eq(0)
     end
 
     it "scores a winning move at no depth +infinity" do
@@ -141,7 +141,7 @@ describe UnbeatableAI do
 
       board.spots[8] = 'X'
 
-      expect(logic.minimax(board, 'X', 'O', 0)).to eq(1.0/0)
+      expect(ai.minimax(board, 'X', 'O', 0)).to eq(1.0/0)
     end
 
     it "scores a winning move at 1 depth -1.0" do
@@ -152,7 +152,7 @@ describe UnbeatableAI do
       board.spots[5] = 'X'
       board.spots[7] = 'O'
 
-      expect(logic.minimax(board, 'O', 'X', 1)).to eq(-1.0)
+      expect(ai.minimax(board, 'O', 'X', 1)).to eq(-1.0)
     end
 
     it "scores a winning move at 2 depth +0.5" do
@@ -164,7 +164,7 @@ describe UnbeatableAI do
       board.spots[7] = 'O'
       board.spots[8] = 'X'
 
-      expect(logic.minimax(board, 'X', 'O', 2)).to eq(0.5)
+      expect(ai.minimax(board, 'X', 'O', 2)).to eq(0.5)
     end
 
     it "scores a winning move at 3 depth -0.3333" do
@@ -177,7 +177,7 @@ describe UnbeatableAI do
       board.spots[5] = 'X'
       board.spots[7] = 'O'
 
-      expect(logic.minimax(board, 'O', 'X', 3)).to eq(-1.0/3)
+      expect(ai.minimax(board, 'O', 'X', 3)).to eq(-1.0/3)
     end
   end
 end

@@ -1,11 +1,9 @@
-class SimpleAI
-  attr_accessor :board
+module SimpleAI
+  class << self
 
-  def initialize(board)
-    @board = board
-  end
+    def choose_next_move(board, *tokens)
+      board.spots.index { |spot| spot == ' ' }
+    end
 
-  def choose_next_move(*tokens)
-    board.spots.index { |spot| spot == ' ' }
   end
 end
