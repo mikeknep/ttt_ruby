@@ -3,11 +3,9 @@ require 'pry'
 Dir['./lib/*.rb'].each { |file| require file }
 
 task :console do
-  puts "This is a pry console for experimenting with objects and methods. We've set up a 3x3 board (@board), a human player (@player_1), and a Joshua computer player (@player_2). You can also access a GameRunner object (@runner) instantiated with these three objects."
-
   @board = Board.new(3)
-  @player_1 = HumanPlayer.new('X')
-  @player_2 = JoshuaPlayer.new('O')
+  @player_1 = Player.new('X', ConsoleUI)
+  @player_2 = Player.new('O', UnbeatableAI)
 
   @runner = GameRunner.new(@board, @player_1, @player_2)
 
