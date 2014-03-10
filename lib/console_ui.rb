@@ -14,6 +14,11 @@ module ConsoleUI
     token = $stdin.gets.chomp
   end
 
+  def self.choose_next_move(board, *tokens)
+    $stdout.puts "Where would you like to play next?"
+    next_move = $stdin.gets.chomp.to_i
+  end
+
   def self.display_board(board)
     board_as_string = "\n\nTic-Tac-Toe\n\n"
 

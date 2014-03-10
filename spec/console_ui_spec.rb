@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'stringio'
 
 describe ConsoleUI do
   it "determines the size of the board" do
@@ -15,6 +14,13 @@ describe ConsoleUI do
   it "determines a player's token" do
     $stdin = StringIO.new('X')
     expect(ConsoleUI.ask_token).to eq('X')
+  end
+
+  it "determines the next move" do
+    board = Board.new(3)
+    $stdin = StringIO.new('5')
+
+    expect(ConsoleUI.choose_next_move(board)).to eq(5)
   end
 
   pending "How do you test $stdout.puts ???" do
