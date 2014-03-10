@@ -1,17 +1,17 @@
 require 'rspec'
 
 describe GameRunner do
-  let(:board)   { Board.new(3) }
-  let(:jane1)   { PlayerHelper.build_player('Jane', 'X') }
-  let(:jane2)   { PlayerHelper.build_player('Jane', 'O') }
-  let(:runner)  { GameRunner.new(board, jane1, jane2) }
+  let(:board)     { Board.new(3) }
+  let(:player_1)  { Player.new('X', SimpleAI) }
+  let(:player_2)  { Player.new('O', SimpleAI) }
+  let(:runner)    { GameRunner.new(board, player_1, player_2) }
 
   it "identifies the current player object" do
-    expect(runner.current_player).to eq(jane1)
+    expect(runner.current_player).to eq(player_1)
   end
 
   it "identifies the opponent player object" do
-    expect(runner.opponent).to eq(jane2)
+    expect(runner.opponent).to eq(player_2)
   end
 
   it "runs the game until there is a winner" do
