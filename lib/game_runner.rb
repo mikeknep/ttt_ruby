@@ -19,6 +19,6 @@ class GameRunner
   end
 
   def opponent
-    Rules.current_player_number(board) == 1 ? player_2 : player_1
+    current_player == player_1 ? player_2 : player_1
   end
 end
