@@ -14,6 +14,8 @@ class GameRunner
     end
   end
 
+  private
+
   def current_player
     Rules.current_player_number(board) == 1 ? player_1 : player_2
   end

@@ -40,7 +40,7 @@ module ConsoleUI
     end
 
     def declare_result(board)
-      result = Rules.winner_on_board?(board) ? "#{Rules.winner_on_board?(board)} wins!" : "Cat's game!"
+      result = Rules.winner(board) ? "#{Rules.winner(board)} wins!" : "Cat's game!"
       $stdout.puts result
     end
 

@@ -18,6 +18,7 @@ module UnbeatableAI
       best_move
     end
 
+    private
 
     def minimax(board, token, opposite_token, depth)
       score = nil
@@ -40,7 +41,7 @@ module UnbeatableAI
 
 
     def score_board(board, token, depth=0)
-      if Rules.winner_on_board?(board) == token
+      if Rules.winner(board) == token
         return (-1.0)**depth
       else
         return 0.0

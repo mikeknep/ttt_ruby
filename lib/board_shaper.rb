@@ -9,6 +9,8 @@ class BoardShaper
     row_indexes + column_indexes + diagonal_indexes
   end
 
+  private
+
   def row_indexes
     all_rows = Array.new
 

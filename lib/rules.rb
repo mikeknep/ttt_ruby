@@ -29,24 +29,24 @@ module Rules
 
 
     def game_over?(board)
-      true if all_spots_taken_on_board?(board) || winner_on_board?(board)
+      true if all_spots_taken_on_board?(board) || winner(board)
     end
 
 
-    def all_spots_taken_on_board?(board)
-      true if not board.spots.include?(' ')
-    end
-
-
-    def winner_on_board?(board)
+    def winner(board)
       values_in_all_directions(board).each do |values|
         if values.uniq.length == 1 && values[0] != ' '
           return values[0]
         end
       end
-      false
+      nil
     end
 
+    private
+
+    def all_spots_taken_on_board?(board)
+      true if not board.spots.include?(' ')
+    end
 
     def values_in_all_directions(board)
       all_paths = BoardShaper.new(board.size).all_path_indexes
