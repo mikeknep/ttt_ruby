@@ -49,7 +49,7 @@ module Rules
     end
 
     def values_in_all_directions(board)
-      all_paths = BoardShaper.new(board.size).all_path_indexes
+      all_paths = BoardShaper.all_path_indexes(board.size)
       values_in_all_directions = Array.new
 
       all_paths.each do |path|
