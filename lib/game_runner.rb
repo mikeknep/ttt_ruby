@@ -9,7 +9,8 @@ class GameRunner
 
   def run
     until Rules.game_over?(board)
-      current_player.take_turn(board, current_player.token, opponent.token)
+      chosen_spot = current_player.choose_spot(board, current_player.token, opponent.token)
+      Gameplay.execute_turn(board, chosen_spot, current_player.token)
       ConsoleUI.display_board(board)
     end
   end

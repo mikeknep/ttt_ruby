@@ -1,7 +1,7 @@
 module Gameplay
   class << self
 
-    def take_turn(board, spot, token)
+    def execute_turn(board, spot, token)
       board.spots[spot] = token if Rules.valid_spot?(board, spot)
     end
 

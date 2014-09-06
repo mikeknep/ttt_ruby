@@ -6,8 +6,7 @@ class Player
     @decision_maker = decision_maker
   end
 
-  def take_turn(board, current_token, opponent_token)
-    spot = decision_maker.choose_next_move(board, current_token, opponent_token)
-    Gameplay.take_turn(board, spot, token)
+  def choose_spot(board, current_token, opponent_token)
+    decision_maker.choose_next_move(board, current_token, opponent_token)
   end
 end
