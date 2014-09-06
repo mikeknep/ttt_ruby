@@ -1,5 +1,5 @@
 class Player
-  attr_accessor :token, :decision_maker
+  attr_reader :token, :decision_maker
 
   def initialize(token, decision_maker)
     @token = token
