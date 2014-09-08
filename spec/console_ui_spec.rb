@@ -27,4 +27,15 @@ describe ConsoleUI do
 
     expect(ConsoleUI.choose_next_move(board)).to eq(5)
   end
+
+  it "prints a formatted representation of the board" do
+    $stdout = StringIO.new
+    board = Board.new(3)
+    board.spots[0] = 'X'
+    board.spots[1] = 'O'
+
+    expect{
+      ConsoleUI.display_board(board)
+    }.to output("\n\nTic-Tac-Toe\n\nX|O| \n | | \n | | \n\n\n").to_stdout
+  end
 end

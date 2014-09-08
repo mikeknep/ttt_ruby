@@ -5,18 +5,6 @@ module BoardShaper
       row_indexes(size) + column_indexes(size) + diagonal_indexes(size)
     end
 
-    def format_board_as_string(board)
-      board_as_string = "\n\nTic-Tac-Toe\n\n"
-
-      board.spots.each_with_index do |spot, index|
-        border_or_newline = ((index + 1) % board.size == 0) ? "\n" : "|"
-        board_as_string << spot + border_or_newline
-      end
-
-      board_as_string << "\n\n"
-    end
-
-
     private
 
     def row_indexes(size)

@@ -27,12 +27,25 @@ module ConsoleUI
     end
 
     def display_board(board)
-      $stdout.puts BoardShaper.format_board_as_string(board)
+      $stdout.puts format_board_as_string(board)
     end
 
     def declare_result(board)
       result = Rules.winner(board) ? "#{Rules.winner(board)} wins!" : "Cat's game!"
       $stdout.puts result
+    end
+
+    private
+
+    def format_board_as_string(board)
+      board_as_string = "\n\nTic-Tac-Toe\n\n"
+
+      board.spots.each_with_index do |spot, index|
+        border_or_newline = ((index + 1) % board.size == 0) ? "\n" : "|"
+        board_as_string << spot + border_or_newline
+      end
+
+      board_as_string << "\n\n"
     end
 
   end
